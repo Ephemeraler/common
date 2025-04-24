@@ -13,7 +13,7 @@ func TestDoPaging(t *testing.T) {
 	page := 2
 	size := 2
 	result, total := DoPaging(a, page, size)
-	if diff := cmp.Diff(total, int64(len(a))); diff != "" {
+	if diff := cmp.Diff(total, len(a)); diff != "" {
 		t.Errorf("total mismatch (-want +got):\n%s", diff)
 	}
 	if diff := cmp.Diff(result, a[2:4]); diff != "" {
@@ -24,7 +24,7 @@ func TestDoPaging(t *testing.T) {
 	page = 0
 	size = 10
 	result, total = DoPaging(a, page, size)
-	if diff := cmp.Diff(total, int64(len(a))); diff != "" {
+	if diff := cmp.Diff(total, len(a)); diff != "" {
 		t.Errorf("total mismatch (-want +got):\n%s", diff)
 	}
 	if diff := cmp.Diff(result, a); diff != "" {
@@ -33,7 +33,7 @@ func TestDoPaging(t *testing.T) {
 	page = 1
 	size = 0
 	result, total = DoPaging(a, page, size)
-	if diff := cmp.Diff(total, int64(len(a))); diff != "" {
+	if diff := cmp.Diff(total, len(a)); diff != "" {
 		t.Errorf("total mismatch (-want +got):\n%s", diff)
 	}
 	if diff := cmp.Diff(result, a); diff != "" {
@@ -44,7 +44,7 @@ func TestDoPaging(t *testing.T) {
 	page = 100
 	size = 10
 	result, total = DoPaging(a, page, size)
-	if diff := cmp.Diff(total, int64(len(a))); diff != "" {
+	if diff := cmp.Diff(total, len(a)); diff != "" {
 		t.Errorf("total mismatch (-want +got):\n%s", diff)
 	}
 	if diff := cmp.Diff(result, []int{}); diff != "" {
@@ -53,7 +53,7 @@ func TestDoPaging(t *testing.T) {
 	page = 2
 	size = 8
 	result, total = DoPaging(a, page, size)
-	if diff := cmp.Diff(total, int64(len(a))); diff != "" {
+	if diff := cmp.Diff(total, len(a)); diff != "" {
 		t.Errorf("total mismatch (-want +got):\n%s", diff)
 	}
 	if diff := cmp.Diff(result, a[8:]); diff != "" {
